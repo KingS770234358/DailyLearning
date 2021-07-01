@@ -1,0 +1,57 @@
+## 配置数据库
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # com.mysql.jdbc.Driver 已经废弃
+    # 配置指定的数据源 不设置的话默认是Hikari
+    type: com.alibaba.druid.pool.DruidDataSource
+    #Spring Boot 默认是不注入这些属性值的，需要自己绑定
+    #druid 数据源专有配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+    #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+    #则导入 log4j 依赖即可，Maven 地址： https://mvnrepository.com/artifact/log4j/log4j
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    #dbcp2:
+      #default-auto-commit: false
+      #default-transaction-isolation: 2
+      #enableAutocommitOnReturn: false
+
+## 整合Mybatis
+mybatis:
+  # 扫描一个包下的实体类,等价于原来全限定名到类名的别名映射
+  type-aliases-package: com.task01scheduleclean.pojo
+  # 扫描resources目录下的接口实现XxxxMapper.xml文件
+  # mapper-locations: classpath:mybatis/mapper/*.xml
+  # mybatis核心配置文件配置引入
+  # config-location:
+  configuration:
+    cache-enabled: true
+
+# 配置pagehelper分页插件
+pagehelper:
+  helperDialect: mysql
+  # 关于reasonable参数：
+  # true，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页，
+  #       即当页数超出数据库的数量时, mybatis还是返回最后一页的数据
+  # false，如果pageNum<1或pageNum>pages会返回空数据
+  # 在实际web项目中，为了在用户输入超出页面范围的页号也可以返回正常的数据，需要将reasonable设置为true
+  reasonable: false
+  support-methods-arguments: true
+  params-count: countSql
