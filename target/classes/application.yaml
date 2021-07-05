@@ -1,5 +1,13 @@
+
+
 ## 配置数据库
 spring:
+  resources:
+    static-locations: classpath:/static/
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
   datasource:
     username: root
     password: root
