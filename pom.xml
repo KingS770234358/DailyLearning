@@ -17,6 +17,12 @@
         <elasticsearch.version>7.13.3</elasticsearch.version>
     </properties>
     <dependencies>
+        <!-- 阿里巴巴 fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
+        </dependency>
         <!-- ElasticSearch 集成SpringBoot的依赖 -->
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch -->
         <dependency>
