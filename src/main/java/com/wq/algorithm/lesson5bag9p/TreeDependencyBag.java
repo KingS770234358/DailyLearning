@@ -30,7 +30,8 @@ public class TreeDependencyBag {
             dfs(target); // ① 对于所有k dp[target][k] 最优
             // ② 这里暂时不考虑 根节点的对状态产生的影响，但是下面是取子树上的物品
             // 因此，根节点必取，所以V要扣掉根节点的volumes[src]
-            for(int v = V - volumes[src]; v >= 0; v--){ // ③ 更新所有的dp[src][ (V-volumes[src]) ~ 0 ]
+            // ③ 每个物品只能取 0 或 1次，因此，倒着更新所有的dp[src][ (V-volumes[src]) ~ 0 ]
+            for(int v = V - volumes[src]; v >= 0; v--){
 
                 for(int kv = 0; kv <= v; kv++){ // ④ 以target为根的子树，视为组内有 [0~v]中物品的 小组，形成分组背包
                     // ⑤ 到这里为止，所有的 dp[src][v] 都是不包含 src 节点的，
