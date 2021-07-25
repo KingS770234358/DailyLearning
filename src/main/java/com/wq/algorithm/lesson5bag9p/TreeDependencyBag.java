@@ -27,20 +27,20 @@ public class TreeDependencyBag {
     private static void dfs(int src){
         for(int e = head[src]; e!=-1; e = next[e]){ // 遍历从src出发的所有边
             int target = edge[e]; // 通过 边的编号 取得目标点
-            dfs(target); // dp[target][k] 最优
-            // 这里暂时不考虑 根节点的对状态产生的影响，但是下面是取子树上的物品
+            dfs(target); // ① 对于所有k dp[target][k] 最优
+            // ② 这里暂时不考虑 根节点的对状态产生的影响，但是下面是取子树上的物品
             // 因此，根节点必取，所以V要扣掉根节点的volumes[src]
-            for(int v = V - volumes[src]; v >= 0; v--){ // 更新所有的dp[src][ (V-volumes[src]) ~ 0 ]
+            for(int v = V - volumes[src]; v >= 0; v--){ // ③ 更新所有的dp[src][ (V-volumes[src]) ~ 0 ]
 
-                for(int kv = 0; kv <= v; kv++){ // 以target为根的子树，视为组内有 [0~v]中物品的 小组，形成分组背包
-                    // 到这里为止，所有的 dp[src][v] 都是不包含 src 节点的，
+                for(int kv = 0; kv <= v; kv++){ // ④ 以target为根的子树，视为组内有 [0~v]中物品的 小组，形成分组背包
+                    // ⑤ 到这里为止，所有的 dp[src][v] 都是不包含 src 节点的，
                     // 即，dp[src][v - kv]相当于分配给除了 target子节点 之外的所有子节点v - kv容量所产生的价值
                     // target 遍历所有子树，target 与 其它所有子树的 组合 取最大值
                     dp[src][v] = Math.max(dp[src][v], dp[src][v - kv] + dp[target][kv]);
                 }
             }
         }
-        // 算出所有的 dp[src][0~V] ==== 这一步才把src节点也算上（而且是必须算上，因为上面取了src子树的物品）
+        // ⑥ 算出所有的 dp[src][0~V] ==== 这一步才把src节点也算上（而且是必须算上，因为上面取了src子树的物品）
         for(int v = V; v>=volumes[src]; v--){
             dp[src][v] = dp[src][v - volumes[src]] + values[src];
         }
