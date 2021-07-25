@@ -44,13 +44,13 @@ public class CompleteBag {
         }
         return dp[V];
     }
-
+    // 背包最朴素写法
     public static int completeBagByArray(int[] weight, int[] value, int V){
-        int[][] dp = new int[weight.length + 10][V + 10];
+        int[] dp = new int[V + 10];
         for(int i = 1; i <= weight.length; i++){
             for(int j = 0; j <= V; j++){
                 for(int k = 0; k * weight[i] <= j ; k++){
-                    // xxxxx
+                    dp[j] = Math.max(dp[j], dp[j - k * weight[i-1]] + k * value[i-1]);
                 }
             }
         }
