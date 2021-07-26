@@ -13,9 +13,9 @@ public class BagTest {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         String line = input.readLine();
         int n = Integer.valueOf(line.split(" ")[0]); // 4 5
-        int[] weight = new int[n + 10];
-        int[] value = new int[n + 10];
-        int[] nLimit = new int[n + 10];
+        int[] weight = new int[n];
+        int[] value = new int[n];
+        int[] nLimit = new int[n];
         int V = Integer.valueOf(line.split(" ")[1]);
         // 1 2 | 2 4 | 3 4 | 4 5
         for (int i = 0; i < n; i++){

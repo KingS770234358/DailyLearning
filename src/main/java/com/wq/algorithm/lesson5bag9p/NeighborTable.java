@@ -26,7 +26,7 @@ import java.util.Arrays;
 public class NeighborTable {
     private static int N = 1000;
     private static int nEdge = 0;
-    private static int[] head = new int[N + 10]; // head[a] 记录 以 a 为起始点的 最后一条边的编号
+    private static int[] head = new int[N + 10]; // head[a] 记录 以 a为起始点的 最后一条边的编号
     /**
      * next[e] 记录 编号为e的边 的下一条边的编号
      * 在邻接表中，起点相同的边 会以链表的形式串起来

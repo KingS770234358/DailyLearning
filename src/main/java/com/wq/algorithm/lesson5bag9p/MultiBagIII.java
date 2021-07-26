@@ -2,14 +2,17 @@ package com.wq.algorithm.lesson5bag9p;
 
 import java.util.Arrays;
 
+/**
+ * 男人八题 - 多重背包
+ */
 public class MultiBagIII {
     /**
      * 1000 20000 20000
      */
     public static int multiBagIII(int[] weight, int[] value, int[] nLimit, int V){
-        int[] dp = new int[V + 10];
+        int[] dp = new int[V + 1];
         int[] pre;
-        int[] deque = new int[V + 10];
+        int[] deque = new int[V + 1];
         for(int i = 0; i < weight.length; i++){ // 遍历物品 复杂度 N
             pre = Arrays.copyOf(dp, dp.length);
             // 根据 第2层 第3层 的循环复杂度，可知 2 3 两层复杂度 ≈ weight[i] * （V - remainder）/ weight[i] = V

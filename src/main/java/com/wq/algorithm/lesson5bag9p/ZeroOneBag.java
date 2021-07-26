@@ -3,7 +3,7 @@ package com.wq.algorithm.lesson5bag9p;
 public class ZeroOneBag {
 
     public static int zeroOneBag(int [] weight, int[] value, int V){
-        int[] dp = new int[V + 10];
+        int[] dp = new int[V + 1];
         dp[0] = 0;
         for(int i = 1; i <= weight.length; i++){
             for(int j = V; j >= weight[i-1]; j--){
@@ -14,7 +14,7 @@ public class ZeroOneBag {
     }
 
     public static int zeroOneBagByArray(int[] weight, int[] value, int V){
-        int[][] dp = new int[weight.length + 10][V + 10];
+        int[][] dp = new int[weight.length + 1][V + 1];
         dp[0][0] = 0;
         for(int i = 1; i <= weight.length; i++){
             for(int j = 0; j <= V; j++){

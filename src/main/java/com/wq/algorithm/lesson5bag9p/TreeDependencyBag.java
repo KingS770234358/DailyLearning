@@ -9,13 +9,13 @@ public class TreeDependencyBag {
 
     private static int N = 1000;
     private static int nEdge = 0;
-    private static int[] head = new int[N + 10];
-    private static int[] next = new int[N + 10];
-    private static int[] edge = new int[N + 10];
+    private static int[] head;
+    private static int[] next;
+    private static int[] edge;
     private static int V = 0;
     private static int[][] dp; // dp[src][v] 体积是v的情况下，以src为根的子树最大价值
-    private static int[] volumes = new int[N + 10];
-    private static int[] values = new int[N + 10];
+    private static int[] volumes;
+    private static int[] values;
 
     // 添加边
     public static void add(int a, int b){
@@ -55,7 +55,14 @@ public class TreeDependencyBag {
         String line = bufferedReader.readLine();
         int nItem = Integer.valueOf(line.split(" ")[0]);
         V = Integer.valueOf(line.split(" ")[1]);
-        dp = new int[nItem + 10][V + 10];
+        head = new int[nItem + 1]; // 第69行 i是从1开始到nItem 所以数组都要多开1
+        next = new int[nItem + 1];
+        edge = new int[nItem + 1];
+
+        volumes = new int[nItem + 1];
+        values = new int[nItem + 1];
+
+        dp = new int[nItem + 1][V + 1];
         int root = Integer.MIN_VALUE;
         int p;
         Arrays.fill(head, -1);

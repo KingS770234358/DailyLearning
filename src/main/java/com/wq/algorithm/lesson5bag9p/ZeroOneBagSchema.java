@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class ZeroOneBagSchema {
     public static void zeroOneBagSchema(int[] volumes, int[] values, int V){
         // ① 这里要追溯最优状态是从以前的哪种状态转移来的 所以需要保留以前的状态记录 需要二维 不能压缩
-        int[][] dp = new int[volumes.length + 10][V + 10];
+        int[][] dp = new int[volumes.length + 1][V + 1];
 
         /**
          * ② 方案的输出必须满足最小字典序，因此 在最后遍历的时候，最好是从头开始遍历

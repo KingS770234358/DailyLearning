@@ -11,9 +11,9 @@ public class MixedBagTest {
         int n = Integer.valueOf(line.split(" ")[0]); // 4 5
         int V = Integer.valueOf(line.split(" ")[1]);
 
-        int[] weight = new int[n + 10];
-        int[] value = new int[n + 10];
-        int[] type = new int[n + 10];
+        int[] weight = new int[n];
+        int[] value = new int[n];
+        int[] type = new int[n];
 
         for (int i = 0; i < n; i++){
             line = input.readLine();

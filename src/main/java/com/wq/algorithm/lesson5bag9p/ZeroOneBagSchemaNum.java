@@ -16,10 +16,10 @@ public class ZeroOneBagSchemaNum {
 
     private static int MOD = 1000000007;
     public static int zeroOneBagSchemaNum(int[] volumes, int[] values, int V){
-        int[] dp = new int[V + 10];
+        int[] dp = new int[V + 1];
         for(int i=1;i<=V;i++) // ① 除了dp[0]，其他dp[i]初始化为 -INF，恰好 vs 最多 的区别
-            dp[i] = -10000000;
-        int[] schema = new int[V + 10];
+            dp[i] = Integer.MIN_VALUE;
+        int[] schema = new int[V + 1];
         schema[0] = 1; // ② 体积为0时，产生的最优解的方案有1种，其他体积都是初始化为0
         // 一、统计每个体积下产生最优解的方案数
         for(int i = 0; i < volumes.length; i++){

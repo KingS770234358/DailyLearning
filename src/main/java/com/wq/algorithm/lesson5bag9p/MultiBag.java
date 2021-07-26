@@ -46,7 +46,7 @@ public class MultiBag {
                 items.add(new Item(nLimit[i] * weight[i], nLimit[i] * value[i]));
             }
         }
-        int[] dp = new int[V + 10]; // 这里是 V + 10， 下标是体积！！！
+        int[] dp = new int[V + 1]; // 这里是 V + 10， 下标是体积！！！
         for(int i = 0; i < items.size(); i++){
             for(int j = V; j >= items.get(i).getWeight(); j--){ // 转换成0-1背包问题
                 dp[j] = Math.max(dp[j], dp[j - items.get(i).getWeight()] + items.get(i).getValue());
@@ -59,7 +59,7 @@ public class MultiBag {
      * 100 * 100 * 100
      */
     public static int multiBag(int[] weight, int[] value, int[] nLimit, int V){
-        int[] dp = new int[V + 10]; // 这里是 V + 10 （下标是体积）
+        int[] dp = new int[V + 1]; // 这里是 V + 10 （下标是体积）
         for(int i = 0; i < weight.length; i++){
             for(int j = V; j >= weight[i]; j--){
                 for(int k = 1; k <= nLimit[i] && k * weight[i] <= j; k++){ // 遍历取的个数

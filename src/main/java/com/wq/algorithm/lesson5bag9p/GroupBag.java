@@ -40,7 +40,7 @@ public class GroupBag {
         }
     }
     public static int groupBag(List<List<Item>> groups, int V){
-        int[] dp = new int[V + 10];
+        int[] dp = new int[V + 1];
         for(int g = 0; g < groups.size(); g++){ // 遍历所有的组
             for(int v = V; v >= 0; v--){ // 组内有多个物品，不确定体积v下限
                 for(int i = 0; i < groups.get(g).size(); i++){ // 遍历组内所有物品 取出组内决策最优的物品

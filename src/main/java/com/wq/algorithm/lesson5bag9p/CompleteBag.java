@@ -36,7 +36,7 @@ package com.wq.algorithm.lesson5bag9p;
 public class CompleteBag {
 
     public static int completeBag(int[] weight, int[] value, int V){
-        int[] dp = new int[V + 10];
+        int[] dp = new int[V + 1];
         for(int i = 1; i <= weight.length; i++){
             for(int j = weight[i-1]; j <= V; j++){
                 dp[j] = Math.max(dp[j], dp[j - weight[i-1]] + value[i - 1]);
@@ -46,7 +46,7 @@ public class CompleteBag {
     }
     // 背包最朴素写法
     public static int completeBagByArray(int[] weight, int[] value, int V){
-        int[] dp = new int[V + 10];
+        int[] dp = new int[V + 1];
         for(int i = 1; i <= weight.length; i++){
             for(int j = 0; j <= V; j++){
                 for(int k = 0; k * weight[i] <= j ; k++){

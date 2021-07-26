@@ -51,7 +51,7 @@ public class MixedBag {
     }
     public static int mixedBag(int[] weight, int[]value, int[] typeSrc, int V){
         int[] type = Arrays.copyOf(typeSrc, typeSrc.length);
-        int[] dp = new int[V + 10];
+        int[] dp = new int[V + 1];
         List<Item> items = new ArrayList<>();
         for(int i = 0; i < weight.length; i++){
             if(type[i] == -1){
